@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
 import Banner from "@/components/HeaderComps/Banner";
 import ProductsList from "@/components/ProductsComps/ProductsList";
 import { useEffect, useState } from "react";
 import { use } from "react";
-
 
 interface Product {
   id: number;
@@ -19,7 +18,11 @@ interface Product {
   };
 }
 
-const CategoryPage = ({ params }: { params: Promise<{ category: string }>  }) => {
+const CategoryPage = ({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) => {
   const [products, setProducts] = useState<Product[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,18 +34,17 @@ const CategoryPage = ({ params }: { params: Promise<{ category: string }>  }) =>
       try {
         setLoading(true);
         const response = await fetch(`/api/categories/${category}`);
-    
+
         if (!response.ok) {
           if (response.status === 404) {
             throw new Error("Category not found");
           }
           throw new Error("Failed to fetch products in the category");
         }
-    
+
         const data: Product[] = await response.json();
         setProducts(data);
       } catch (error) {
-        // Ensure `error` is properly typed
         if (error instanceof Error) {
           console.error("Error fetching category products:", error.message);
           setError(error.message);
@@ -54,7 +56,6 @@ const CategoryPage = ({ params }: { params: Promise<{ category: string }>  }) =>
         setLoading(false);
       }
     };
-    
 
     fetchCategoryProducts();
   }, [category]);
@@ -64,10 +65,9 @@ const CategoryPage = ({ params }: { params: Promise<{ category: string }>  }) =>
 
   return (
     <div className="  pt-18 ">
-      <Banner title={category}/>
+      <Banner title={category} />
       <section className="my-8">
-
-      {products && <ProductsList products={products} />}
+        {products && <ProductsList products={products} />}
       </section>
     </div>
   );

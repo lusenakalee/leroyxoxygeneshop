@@ -4,9 +4,8 @@ import { ShoppingBag } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/lib/slices/basketSlice";
 
-// Define the Product type
 interface Product {
-  id: number; // Adjust to your actual product ID type
+  id: number;
   title: string;
   image: string;
   category: string;
@@ -20,7 +19,6 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const dispatch = useDispatch();
 
-  // Add to cart handler
   const handleAddToCart = () => {
     dispatch(
       addItem({
@@ -28,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         title: product.title,
         image: product.image,
         price: product.price,
-        quantity: 1, // Default quantity
+        quantity: 1, 
       })
     );
   };

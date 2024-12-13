@@ -10,7 +10,7 @@ interface Product {
 }
 
 interface ProductsListProps {
-  products: Product[]; // Array of Product objects
+  products: Product[]; 
 }
 
 export default function ProductsList({ products }: ProductsListProps) {

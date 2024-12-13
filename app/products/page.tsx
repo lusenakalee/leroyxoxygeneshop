@@ -17,17 +17,16 @@ interface Product {
 
 const ProductsPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 10;
 
-  // Fetch Products
   useEffect(() => {
     const fetchProducts = async () => {
-      setLoading(true); // Set loading to true before fetching
+      setLoading(true);
       try {
         const endpoint = selectedCategory
           ? `/api/categories/${selectedCategory}`
@@ -35,7 +34,6 @@ const ProductsPage = () => {
         const res = await fetch(endpoint);
         const data = await res.json();
 
-        // Paginate products
         const start = (currentPage - 1) * itemsPerPage;
         const paginatedProducts = data.slice(start, start + itemsPerPage);
 
@@ -44,17 +42,16 @@ const ProductsPage = () => {
       } catch (error) {
         console.error("Failed to fetch products:", error);
       } finally {
-        setLoading(false); // Set loading to false after fetching
+        setLoading(false);  
       }
     };
 
     fetchProducts();
   }, [selectedCategory, currentPage]);
 
-  // Fetch Categories
   useEffect(() => {
     const fetchCategories = async () => {
-      setLoading(true); // Set loading to true before fetching categories
+      setLoading(true);
       try {
         const res = await fetch("/api/categories");
         const data = await res.json();
@@ -62,17 +59,16 @@ const ProductsPage = () => {
       } catch (error) {
         console.error("Failed to fetch categories:", error);
       } finally {
-        setLoading(false); // Set loading to false after fetching categories
+        setLoading(false); 
       }
     };
 
     fetchCategories();
   }, []);
 
-  // Handle Category Filter Change
   const handleCategoryChange = (category: string | null) => {
     setSelectedCategory(category);
-    setCurrentPage(1); // Reset to first page when category changes
+    setCurrentPage(1); 
   };
 
   return (
@@ -162,7 +158,6 @@ const ProductsPage = () => {
 
           </div>
         ) : (
-          // Product List
           <div>
             {products.length > 0 ? (
               <ProductsList products={products} />

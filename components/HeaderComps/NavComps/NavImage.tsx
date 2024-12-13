@@ -12,7 +12,7 @@ interface IndexProps {
 const NavImage: React.FC<IndexProps> = ({ src, isActive }) => {
   return (
     <motion.div 
-      variants={opacity as  unknown as Variants} // Fix type compatibility here
+      variants={opacity as  unknown as Variants}
       initial="initial" 
       animate={isActive ? "open" : "closed"} 
       className="imageContainer"

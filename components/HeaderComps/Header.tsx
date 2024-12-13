@@ -16,10 +16,10 @@ const carolineFont = localFont({
 
 const Header: React.FC = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [isClient, setIsClient] = useState(false); // New state to check client-side rendering
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Update state to true once the component is mounted on the client
+    setIsClient(true);
   }, []);
 
   if (!isClient) return null;
@@ -27,11 +27,16 @@ const Header: React.FC = () => {
   return (
     <div className="header z-10 ">
       <div className="bar">
-        <Link
+      <Link
           className="flex text-xl md:text-2xl font-semibold tracking-widest"
           href="/"
         >
-          <span className={carolineFont.className}>Leroy X</span>
+          <span></span>
+          <span className={carolineFont.className}>
+            <span className="block sm:hidden">L X</span>
+            <span className="hidden sm:block">Leroy X</span>
+           
+          </span>
           <span className="pl-2">
             <img
               src="/images/oxygene_logo2.png"

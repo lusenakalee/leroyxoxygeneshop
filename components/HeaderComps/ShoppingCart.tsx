@@ -12,14 +12,12 @@ const ShoppingCart = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
-  // Selectors for cart items and totals
   const items = useSelector((state: RootState) => state.basket.items);
   const totalQuantity = useSelector(
     (state: RootState) => state.basket.totalQuantity
   );
   const totalPrice = useSelector((state: RootState) => state.basket.totalPrice);
 
-  // Handlers for item updates
   const handleRemoveItem = (id: number) => {
     dispatch(removeItem({ id }));
   };

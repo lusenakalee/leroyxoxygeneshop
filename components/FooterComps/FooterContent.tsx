@@ -18,7 +18,7 @@ export default function FooterContent() {
 
 const Section1 = () => {
   return (
-    <div className="text-white">
+    <div className="mt-96 md:mt-64">
       <Nav />
     </div>
   );
@@ -27,15 +27,13 @@ const Section1 = () => {
 const Section2 = () => {
   return (
     <div>
-      <Nav />
-
       <div className="flex justify-between items-end">
         <h1 className="text-[14vw] leading-[0.8] mt-10 text-yellow-600">
           <span className={carolineFont.className}>Leroy X</span>
           <img
             src="/images/oxygene_logo2.png"
             alt="oxyegene Logo"
-            className="h-24"
+            className="w-full"
           />
         </h1>
       </div>
@@ -50,10 +48,11 @@ const Nav = () => {
         <h3 className="mb-2 uppercase text-[#ffffff80] font-bold">About</h3>
         <Link href="/">Home</Link>
         <Link href="/products">Products</Link>
-       
       </div>
       <div className="flex flex-col text-white font-thin  gap-2">
-        <h3 className="mb-2 uppercase text-[#ffffff80] font-bold">My Contacts</h3>
+        <h3 className="mb-2 uppercase text-[#ffffff80] font-bold">
+          My Contacts
+        </h3>
         <p className="hover:underline">
           WhatsApp:{" "}
           <a
@@ -68,7 +67,8 @@ const Nav = () => {
           Email:{" "}
           <a href="mailto:lusenakalee@gmail.com">lusenakalee@gmail.com</a>
         </p>
-        <a className="hover:underline"
+        <a
+          className="hover:underline"
           href="https://leroyportfolio.vercel.app"
           target="_blank"
           rel="noopener noreferrer"

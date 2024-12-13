@@ -14,12 +14,11 @@ const carolineFont = localFont({
 
 export default function HeroSection() {
   return (
-    <div className="relative h-screen w-full">
-      {/* Background Image */}
+    <div className="relative h-[45vh] md:h-screen w-full">
       <div className="absolute inset-0">
         <Image
           src="/images/header2.png"
-          alt="Leroy Oxygene Candle"
+          alt="Leroy Oxygene "
           fill
           className="object-cover brightness-75"
           priority
@@ -30,6 +29,7 @@ export default function HeroSection() {
       <div className="relative z- flex h-full flex-col items-center justify-center px-4 text-center">
         <div className="max-w-3xl space-y-6">
           <h1 className="font-serif text-4xl font-light tracking-wider text-white sm:text-5xl md:text-6xl">
+            
           <span  className={carolineFont.className}>  Leroy X oxygene Shop</span>
           </h1>
           <p className="text-lg text-gray-200 md:text-xl">

@@ -1,16 +1,14 @@
 import { RootState } from '@/globalRedux/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-// Define the types for the items in the cart
 export interface CartItem {
-  id: number; // Assuming `id` is a number based on your product structure
+  id: number; 
   title: string;
   price: number;
   quantity: number;
   image: string;
 }
 
-// Define the initial state type
 export interface BasketState {
   items: CartItem[];
   totalQuantity: number;
@@ -32,14 +30,11 @@ const basketSlice = createSlice({
       const existingItemIndex = state.items.findIndex(item => item.id === newItem.id);
 
       if (existingItemIndex >= 0) {
-        // Item already in the basket, update the quantity
         state.items[existingItemIndex].quantity += newItem.quantity;
       } else {
-        // New item, add to basket
         state.items.push(newItem);
       }
 
-      // Recalculate total quantity and price
       state.totalQuantity += newItem.quantity;
       state.totalPrice += newItem.price * newItem.quantity;
     },
